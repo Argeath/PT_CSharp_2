@@ -84,7 +84,8 @@ namespace Lab1
 
             i1.Click += (sender, args) =>
             {
-
+                //SubWindow subWindow = new SubWindow(item.Tag.ToString(), this);
+                //subWindow.Show();
             };
 
             MenuItem i2 = new MenuItem
