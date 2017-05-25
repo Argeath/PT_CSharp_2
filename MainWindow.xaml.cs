@@ -31,7 +31,7 @@ namespace Lab1
             GetAll();
         }
 
-        private void GetAll()
+        public void GetAll()
         {
             treeView.Items.Clear();
             DirectoryInfo root = new DirectoryInfo(SelectedPath);
@@ -56,6 +56,7 @@ namespace Lab1
                         Tag = dir.FullName
                     };
                     item.ContextMenu = CreateFolderMenu(item);
+                    AddAttributesOnClick(item, dir);
                     viewItem.Items.Add(item);
 
                     AddChild(dir, item);
@@ -70,8 +71,21 @@ namespace Lab1
                     Tag = file.FullName
                 };
                 item.ContextMenu = CreateFileMenu(item);
+                AddAttributesOnClick(item, file);
                 viewItem.Items.Add(item);
             }
+        }
+
+        private void AddAttributesOnClick(TreeViewItem item, FileSystemInfo file)
+        {
+            item.MouseLeftButtonUp += (sender, args) =>
+            {
+                string r = (file.Attributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly ? "r" : "-";
+                string a = (file.Attributes & FileAttributes.Archive) == FileAttributes.Archive ? "a" : "-";
+                string h = (file.Attributes & FileAttributes.Hidden) == FileAttributes.Hidden ? "h" : "-";
+                string s = (file.Attributes & FileAttributes.System) == FileAttributes.System ? "s" : "-";
+                statusText.Text = r + a + h + s;
+            };
         }
 
         private ContextMenu CreateFolderMenu(TreeViewItem item)
@@ -84,8 +98,8 @@ namespace Lab1
 
             i1.Click += (sender, args) =>
             {
-                //SubWindow subWindow = new SubWindow(item.Tag.ToString(), this);
-                //subWindow.Show();
+                SubWindow subWindow = new SubWindow(item.Tag.ToString(), this);
+                subWindow.Show();
             };
 
             MenuItem i2 = new MenuItem

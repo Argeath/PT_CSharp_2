@@ -78,15 +78,15 @@ namespace Lab1
             String tempPath = pathParent + "\\" + fileName;
             if (file)
             {
-                var temp = System.IO.File.Create(tempPath);
+                var temp = File.Create(tempPath);
                 if (archive)
-                    System.IO.File.SetAttributes(tempPath, System.IO.FileAttributes.Archive);
+                    File.SetAttributes(tempPath, FileAttributes.Archive);
                 if (readOnly)
-                    System.IO.File.SetAttributes(tempPath, System.IO.FileAttributes.ReadOnly);
+                    File.SetAttributes(tempPath, FileAttributes.ReadOnly);
                 if (system)
-                    System.IO.File.SetAttributes(tempPath, System.IO.FileAttributes.System);
+                    File.SetAttributes(tempPath, FileAttributes.System);
                 if (hidden)
-                    System.IO.File.SetAttributes(tempPath, System.IO.FileAttributes.Hidden);
+                    File.SetAttributes(tempPath, FileAttributes.Hidden);
 
                 temp.Close();
 
@@ -104,13 +104,13 @@ namespace Lab1
                 if (hidden)
                     dir.Attributes |= FileAttributes.Hidden;
             }
-            //mainWindow.refresh();
-            this.Close();
+            mainWindow.GetAll();
+            Close();
         }
 
         private void button_Copy_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void checkBoxH_Unchecked(object sender, RoutedEventArgs e)

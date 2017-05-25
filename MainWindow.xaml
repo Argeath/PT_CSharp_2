@@ -23,8 +23,11 @@
                 </MenuItem>
             </Menu>
         </ToolBar>
-        <TreeView x:Name="treeView" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch">
+        <TreeView x:Name="treeView" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" Margin="0,0,0,32">
         </TreeView>
+        <StatusBar HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="0" Height="32">
+            <TextBlock x:Name="statusText" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4" Text="----"></TextBlock>
+        </StatusBar>
         <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch">
             <TextBlock x:Name="textBlock" TextWrapping="Wrap" Margin="5"/>
         </ScrollViewer>
