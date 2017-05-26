@@ -75,6 +75,12 @@ namespace Lab1
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            bool res = Regex.IsMatch(fileName, "(\w){1,8}.(php|txt|html)");
+            if(!res) {
+                MessageBoxResult result = MessageBox.Show("Filename is incorrect", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            
             String tempPath = pathParent + "\\" + fileName;
             if (file)
             {
